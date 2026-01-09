@@ -23,14 +23,25 @@ export const register = async (req: Request, res: Response) => {
     // Store refresh token in HttpOnly cookie
     res.cookie('refreshToken', refreshToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict',
+      secure: process.env.NODE_ENV === 'production', // Must be true for SameSite=None
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
     res.status(201).json({ accessToken, user: { id: user.id, email: user.email } });
   } catch (error: any) {
-    if (error.errors) return res.status(400).json({ error: error.errors });
+    if (error.errors) {
+      // Zod Validation Error
+      return res.status(400).json({ 
+        error: 'Validation failed', 
+        details: error.errors.map((e: any) => e.message) 
+      });
+    }
+    // Prisma Unique Constraint Error (P2002)
+    if (error.code === 'P2002') {
+       return res.status(409).json({ error: 'Email already exists' });
+    }
+    console.error('Register error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
@@ -50,13 +61,19 @@ export const login = async (req: Request, res: Response) => {
     res.cookie('refreshToken', refreshToken, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict',
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
     res.json({ accessToken, user: { id: user.id, email: user.email } });
   } catch (error: any) {
-    if (error.errors) return res.status(400).json({ error: error.errors });
+    if (error.errors) {
+      return res.status(400).json({ 
+        error: 'Validation failed', 
+        details: error.errors.map((e: any) => e.message) 
+      });
+    }
+    console.error('Login error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };

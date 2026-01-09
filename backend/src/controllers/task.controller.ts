@@ -60,7 +60,13 @@ export const createTask = async (req: AuthRequest, res: Response) => {
 
     res.status(201).json(task);
   } catch (error: any) {
-    if (error.errors) return res.status(400).json({ error: error.errors });
+    if (error.errors) {
+      return res.status(400).json({ 
+        error: 'Validation failed', 
+        details: error.errors.map((e: any) => e.message) 
+      });
+    }
+    console.error('Create Task Error:', error);
     res.status(500).json({ error: 'Failed to create task' });
   }
 };
@@ -100,7 +106,13 @@ export const updateTask = async (req: AuthRequest, res: Response) => {
 
     res.json(updatedTask);
   } catch (error: any) {
-    if (error.errors) return res.status(400).json({ error: error.errors });
+    if (error.errors) {
+        return res.status(400).json({ 
+          error: 'Validation failed', 
+          details: error.errors.map((e: any) => e.message) 
+        });
+    }
+    console.error('Update Task Error:', error);
     res.status(500).json({ error: 'Failed to update task' });
   }
 };
