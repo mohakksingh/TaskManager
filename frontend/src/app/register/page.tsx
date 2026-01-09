@@ -35,7 +35,6 @@ export default function RegisterPage() {
       <div className="w-full max-w-md overflow-hidden rounded-2xl bg-white shadow-xl transition-all hover:shadow-2xl">
         <div className="bg-black p-8 text-center">
           <h2 className="text-3xl font-bold text-white">Create Account</h2>
-          <p className="mt-2 text-gray-400">Join us to start managing tasks</p>
         </div>
 
         <div className="p-8">
