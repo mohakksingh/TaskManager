@@ -43,7 +43,7 @@ export default function TaskForm({ initialData, onSubmit, onCancel, isEditing = 
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="mt-1 block w-full text-black rounded-md border border-gray-300 p-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 "
+              className="mt-1 block w-full text-black rounded-md border border-gray-300 p-2 shadow-sm focus:border-black focus:ring-black "
               required
             />
           </div>
@@ -52,7 +52,7 @@ export default function TaskForm({ initialData, onSubmit, onCancel, isEditing = 
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="mt-1 block w-full text-black rounded-md border border-gray-300 p-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 "
+              className="mt-1 block w-full text-black rounded-md border border-gray-300 p-2 shadow-sm focus:border-black focus:ring-black "
               rows={3}
               
             />
@@ -68,7 +68,7 @@ export default function TaskForm({ initialData, onSubmit, onCancel, isEditing = 
             <button
               type="submit"
               disabled={loading}
-              className="flex items-center justify-center rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700 disabled:bg-indigo-400 min-w-[80px]"
+              className="flex items-center justify-center rounded-md bg-black px-4 py-2 text-white hover:bg-gray-800 disabled:bg-gray-400 min-w-[80px]"
             >
               {loading ? <Loader size="sm" color="border-white" /> : 'Save'}
             </button>

@@ -129,7 +129,7 @@ export default function DashboardPage() {
           <div className="relative" ref={menuRef}>
             <button
               onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-              className="flex items-center justify-center rounded-full bg-indigo-100 p-2 text-indigo-600 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              className="flex items-center justify-center rounded-full bg-gray-200 p-2 text-black hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
             >
               <User className="h-6 w-6" />
             </button>
@@ -138,7 +138,7 @@ export default function DashboardPage() {
               <div className="absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                 <button
                   onClick={logout}
-                  className="flex w-full items-center px-4 py-2 text-sm text-red-600 hover:bg-red-50"
+                  className="flex w-full items-center px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
                 >
                   <LogOut className="mr-2 h-4 w-4" />
                   Logout
@@ -155,14 +155,14 @@ export default function DashboardPage() {
               placeholder="Search tasks..."
               value={search}
               onChange={(e) => { setSearch(e.target.value); setPage(1); }}
-              className="w-full rounded-md border border-gray-300 pl-10 px-4 py-2 text-black focus:border-indigo-500 focus:ring-indigo-500 placeholder-black"
+              className="w-full rounded-md border border-gray-300 pl-10 px-4 py-2 text-black focus:border-black focus:ring-black placeholder-gray-500"
             />
             <Search className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
           </div>
           <select
             value={filterStatus}
             onChange={(e) => { setFilterStatus(e.target.value as any); setPage(1); }}
-            className="rounded-md border border-gray-300 px-4 py-2 focus:border-indigo-500 focus:ring-indigo-500 text-black"
+            className="rounded-md border border-gray-300 px-4 py-2 focus:border-black focus:ring-black text-black"
           >
             <option value="">All Status</option>
             <option value="OPEN">Open</option>
@@ -170,7 +170,7 @@ export default function DashboardPage() {
           </select>
           <button
             onClick={() => { setEditingTask(undefined); setIsModalOpen(true); }}
-            className="flex items-center justify-center rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700"
+            className="flex items-center justify-center rounded-md bg-black px-4 py-2 text-white hover:bg-gray-800"
           >
             <Plus className="mr-2 h-5 w-5" />
             Add Task

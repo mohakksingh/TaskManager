@@ -31,19 +31,16 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 p-4">
+    <div className="flex min-h-screen items-center justify-center bg-gray-50 p-4">
       <div className="w-full max-w-md overflow-hidden rounded-2xl bg-white shadow-xl transition-all hover:shadow-2xl">
-        <div className="bg-indigo-600 p-8 text-center bg-[url('/grid.svg')]">
-          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
-            <UserPlus className="h-6 w-6 text-white" />
-          </div>
+        <div className="bg-black p-8 text-center">
           <h2 className="text-3xl font-bold text-white">Create Account</h2>
-          <p className="mt-2 text-indigo-100">Join us to start managing tasks</p>
+          <p className="mt-2 text-gray-400">Join us to start managing tasks</p>
         </div>
 
         <div className="p-8">
           {error && (
-            <div className="mb-6 rounded-md bg-red-50 p-4 text-sm text-red-500 border border-red-100">
+            <div className="mb-6 rounded-md bg-gray-100 p-4 text-sm text-red-600 border border-gray-200">
               {error}
             </div>
           )}
@@ -59,7 +56,7 @@ export default function RegisterPage() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="block w-full rounded-lg border border-gray-300 pl-10 px-3 py-2.5 text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all"
+                  className="block w-full rounded-lg border border-gray-300 pl-10 px-3 py-2.5 text-black placeholder-gray-500 focus:border-black focus:outline-none focus:ring-2 focus:ring-black/20 transition-all"
                   placeholder="name@company.com"
                   required
                 />
@@ -76,7 +73,7 @@ export default function RegisterPage() {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="block w-full rounded-lg border border-gray-300 pl-10 px-3 py-2.5 text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all"
+                  className="block w-full rounded-lg border border-gray-300 pl-10 px-3 py-2.5 text-black placeholder-gray-500 focus:border-black focus:outline-none focus:ring-2 focus:ring-black/20 transition-all"
                   placeholder="Create a password"
                   required
                 />
@@ -86,7 +83,7 @@ export default function RegisterPage() {
             <button
               type="submit"
               disabled={loading}
-              className="group relative flex w-full justify-center rounded-lg bg-indigo-600 py-2.5 px-4 text-sm font-semibold text-white transition-all hover:bg-indigo-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:bg-indigo-400"
+              className="group relative flex w-full justify-center rounded-lg bg-black py-2.5 px-4 text-sm font-semibold text-white transition-all hover:bg-gray-800 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 disabled:bg-gray-400"
             >
               {loading ? (
                 <Loader size="sm" color="border-white" />
@@ -101,7 +98,7 @@ export default function RegisterPage() {
 
           <p className="mt-8 text-center text-sm text-gray-500">
             Already have an account?{' '}
-            <Link href="/login" className="font-semibold text-indigo-600 transition-colors hover:text-indigo-500 hover:underline">
+            <Link href="/login" className="font-semibold text-black transition-colors hover:text-gray-700 hover:underline">
               Sign In
             </Link>
           </p>
